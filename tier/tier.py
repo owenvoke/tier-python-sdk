@@ -54,9 +54,9 @@ class TIER:
             raise RuntimeError("Invalid request method provided")
 
         if response.status_code == 401:
-            raise UnauthorizedException(response.json().get("error"))
+            raise UnauthorizedException()
         if response.status_code == 404:
-            raise NotFoundException(response.json().get("error"))
+            raise NotFoundException(response.json().get("title"))
         if response.status_code >= 400:
             raise TIERException(response.json().get("error") or "Unknown error")
         return response.json()
