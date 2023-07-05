@@ -88,6 +88,43 @@ def test_vehicles_in_zone():
         )
 
 
+def test_vehicle():
+    with requests_mock.Mocker() as m:
+        m.get(
+            url="https://platform.tier-services.io/v1/vehicle/f55c8951-4c7d-40cc-9f59-6d7e3bd43025",
+            json={
+                "data": [
+                    {
+                        "type": "vehicle",
+                        "id": "f55c8951-4c7d-40cc-9f59-6d7e3bd43025",
+                        "attributes": {
+                            "state": "ACTIVE",
+                            "lastLocationUpdate": "2020-06-19T11:23:06Z",
+                            "lastStateChange": "2020-06-12T09:32:14Z",
+                            "batteryLevel": 29,
+                            "lat": 52.548977,
+                            "lng": 13.437837,
+                            "maxSpeed": 20,
+                            "zoneId": "BERLIN",
+                            "code": 230208,
+                            "iotVendor": "okai",
+                            "licencePlate": "693WVE",
+                            "isRentable": True,
+                            "vehicleType": "escooter",
+                            "hasHelmetBox": False,
+                            "hasHelmet": False,
+                        },
+                    }
+                ]
+            },
+        )
+
+        vehicle = tier.vehicles.get("f55c8951-4c7d-40cc-9f59-6d7e3bd43025")
+
+        assert type(vehicle) == dict
+        assert vehicle.get("id") == "f55c8951-4c7d-40cc-9f59-6d7e3bd43025"
+
+
 def test_non_existent_zone():
     with requests_mock.Mocker() as m:
         m.get(

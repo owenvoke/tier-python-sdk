@@ -99,10 +99,10 @@ def test_zone():
             },
         )
 
-        zones = tier.zones.get("40cfe9ed-5844-4e5c-9412-518c51a21201")
+        zone = tier.zones.get("40cfe9ed-5844-4e5c-9412-518c51a21201")
 
-        assert type(zones) == dict
-        assert zones.get("id") == "40cfe9ed-5844-4e5c-9412-518c51a21201"
+        assert type(zone) == dict
+        assert zone.get("id") == "40cfe9ed-5844-4e5c-9412-518c51a21201"
 
 
 def test_sites_single_for_a_non_existent_site():

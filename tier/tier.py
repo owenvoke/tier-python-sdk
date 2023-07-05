@@ -2,7 +2,7 @@ from typing import Optional, cast
 
 import requests
 
-from .types import VehiclesCollection, RootZonesCollection, RootZone
+from .types import VehiclesCollection, RootZonesCollection, RootZone, Vehicle
 
 TIMEOUT = 3
 API_BASE_URI = "https://platform.tier-services.io"
@@ -78,6 +78,11 @@ class Vehicles:
     def in_zone(self, zone_id: str) -> VehiclesCollection:
         return cast(
             VehiclesCollection, self.client.get(f"/v2/vehicle?zoneId={zone_id}")
+        )
+
+    def get(self, identifier: str) -> Vehicle:
+        return cast(
+            Vehicle, self.client.get(f"/v1/vehicle/{identifier}").get("data")[0]
         )
 
 
