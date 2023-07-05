@@ -6,12 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 
 ## Unreleased
 
-## v1.0.1 - 2023-07-04
+## v0.1.2 - 2023-07-05
+
+### Added
+- Add support for retrieving zones
+- Add support for retrieving specific vehicle by id
+
+## v0.1.1 - 2023-07-04
 
 ### Fixed
 - Resolve issue with no JSON content on 401 response
 
-## v1.0.0 - 2023-07-04
+## v0.1.0 - 2023-07-04
 
 ### Added
 - Initial release
