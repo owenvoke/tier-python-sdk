@@ -25,10 +25,13 @@ tier = TIER(api_token="your-token")
 sites = tier.vehicles.in_radius(52.548977, 13.437837, 500)
 ```
 
-| Available Methods                                      | Description                                                                             |
-|:-------------------------------------------------------|:----------------------------------------------------------------------------------------|
-| `tier.vehicles.in_radius(latitude, longitude, radius)` | Retrieve a `VehiclesCollection` dict with details about vehicles for a specific radius. |
-| `tier.vehicles.in_zone(zone_id)`                       | Retrieve a `VehiclesCollection` dict with details about vehicles for a specific radius. |
+| Available Methods                                      | Description                                                                                         |
+|:-------------------------------------------------------|:----------------------------------------------------------------------------------------------------|
+| `tier.vehicles.in_radius(latitude, longitude, radius)` | Retrieve a `VehiclesCollection` dict with details about vehicles for a specific radius.             |
+| `tier.vehicles.in_zone(zone_id)`                       | Retrieve a `VehiclesCollection` dict with details about vehicles for a specific radius.             |
+| `tier.zones.all()`                                     | Retrieve a `RootZonesCollection` dict with details about all zones.                                 |
+| `tier.zones.near(latitude, longitude)`                 | Retrieve a `RootZonesCollection` dict with details about zones within 50km of a set of coordinates. |
+| `tier.zones.get(zone_id)`                              | Retrieve a `RootZone` dict with details about a specific zone.                                      |
 
 ## Change log
 

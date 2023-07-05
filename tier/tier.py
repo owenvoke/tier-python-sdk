@@ -2,9 +2,7 @@ from typing import Optional, cast
 
 import requests
 
-from .types import (
-    VehiclesCollection,
-)
+from .types import VehiclesCollection, RootZonesCollection, RootZone
 
 TIMEOUT = 3
 API_BASE_URI = "https://platform.tier-services.io"
@@ -29,6 +27,7 @@ class TIER:
         self.headers: dict = {"X-API-Key": self.api_token}
 
         self.vehicles: Vehicles = Vehicles(self)
+        self.zones: Zones = Zones(self)
 
     def get(self, url: str):
         return self.__request("GET", url)
@@ -79,4 +78,23 @@ class Vehicles:
     def in_zone(self, zone_id: str) -> VehiclesCollection:
         return cast(
             VehiclesCollection, self.client.get(f"/v2/vehicle?zoneId={zone_id}")
+        )
+
+
+class Zones:
+    def __init__(self, client: TIER):
+        self.client = client
+
+    def all(self) -> RootZonesCollection:
+        return cast(RootZonesCollection, self.client.get(f"/v2/zone/root").get("data"))
+
+    def get(self, identifier: str) -> RootZone:
+        return cast(
+            RootZone, self.client.get(f"/v2/zone/root/{identifier}").get("data")
+        )
+
+    def near(self, latitude: float, longitude: float) -> RootZonesCollection:
+        return cast(
+            RootZonesCollection,
+            self.client.get(f"/v2/zone/root?lat={latitude}&lng={longitude}").get("data"),
         )

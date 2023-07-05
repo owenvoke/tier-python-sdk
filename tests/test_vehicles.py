@@ -88,7 +88,7 @@ def test_vehicles_in_zone():
         )
 
 
-def test_sites_single_for_a_non_existent_site():
+def test_non_existent_zone():
     with requests_mock.Mocker() as m:
         m.get(
             url="https://platform.tier-services.io/v2/vehicle?zoneId=fake_zone",
