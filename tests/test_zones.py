@@ -38,7 +38,9 @@ def test_zones():
 
         assert type(zones) == dict
         assert type(zones.get("features")) == list
-        assert zones.get("features")[0].get("id") == "40cfe9ed-5844-4e5c-9412-518c51a21201"
+        assert (
+            zones.get("features")[0].get("id") == "40cfe9ed-5844-4e5c-9412-518c51a21201"
+        )
 
 
 def test_zones_near():
@@ -73,7 +75,9 @@ def test_zones_near():
 
         assert type(zones) == dict
         assert type(zones.get("features")) == list
-        assert zones.get("features")[0].get("id") == "40cfe9ed-5844-4e5c-9412-518c51a21201"
+        assert (
+            zones.get("features")[0].get("id") == "40cfe9ed-5844-4e5c-9412-518c51a21201"
+        )
 
 
 def test_zone():

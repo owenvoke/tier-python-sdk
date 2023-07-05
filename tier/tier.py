@@ -101,5 +101,7 @@ class Zones:
     def near(self, latitude: float, longitude: float) -> RootZonesCollection:
         return cast(
             RootZonesCollection,
-            self.client.get(f"/v2/zone/root?lat={latitude}&lng={longitude}").get("data"),
+            self.client.get(f"/v2/zone/root?lat={latitude}&lng={longitude}").get(
+                "data"
+            ),
         )
